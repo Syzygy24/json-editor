@@ -816,10 +816,12 @@ JSONEditor.defaults.editors.object = JSONEditor.AbstractEditor.extend({
         self.addObjectProperty(i);
         editor.setValue(value[i],initial);
       }
+
       // Otherwise, remove value unless this is the initial set or it's required
       else if(!initial && !self.isRequired(editor)) {
-        self.removeObjectProperty(i);
+        editor.setValue(editor.getDefault(),initial);
       }
+
       // Otherwise, set the value to the default
       else {
         editor.setValue(editor.getDefault(),initial);
@@ -832,10 +834,9 @@ JSONEditor.defaults.editors.object = JSONEditor.AbstractEditor.extend({
         if(self.editors[i]) self.editors[i].setValue(val,initial);
       }
     });
-
     this.refreshValue();
     this.layoutEditors();
-    this.onChange();
+    this.onChange(true);
   },
   showValidationErrors: function(errors) {
     var self = this;

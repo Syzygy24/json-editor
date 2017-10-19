@@ -1,0 +1,70 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/ynpm', 'run', 'test' ]
+2 silly now 2017-10-19T00:45:43.361Z
+3 silly hostname C02TN26QG8WL-lm
+4 silly platform darwin
+5 silly arch x64
+6 silly release 16.7.0
+7 silly node { http_parser: '2.7.0',
+7 silly node   node: '6.10.2',
+7 silly node   v8: '5.1.281.98',
+7 silly node   uv: '1.9.1',
+7 silly node   zlib: '1.2.11',
+7 silly node   ares: '1.10.1-DEV',
+7 silly node   icu: '58.2',
+7 silly node   modules: '48',
+7 silly node   openssl: '1.0.2k',
+7 silly node   ynpm: '3.4.29',
+7 silly node   npm: '3.10.9' }
+8 info using ynpm@3.4.29
+9 info using npm@3.10.9
+10 info using node@v6.10.2
+11 silly conf { argv:
+11 silly conf    { remain: [ 'run', 'test' ],
+11 silly conf      cooked: [ 'run', 'test' ],
+11 silly conf      original: [ 'run', 'test' ] } }
+12 silly argv undefined
+13 silly looking for command:  install
+14 silly found proxy command for install
+15 silly looking for command:  run
+16 verbose run-script [ 'pretest', 'test', 'posttest' ]
+17 info lifecycle y-jsoneditor@0.8.1~pretest: y-jsoneditor@0.8.1
+18 silly lifecycle y-jsoneditor@0.8.1~pretest: no script for pretest, continuing
+19 info lifecycle y-jsoneditor@0.8.1~test: y-jsoneditor@0.8.1
+20 verbose lifecycle y-jsoneditor@0.8.1~test: unsafe-perm in lifecycle true
+21 verbose lifecycle y-jsoneditor@0.8.1~test: PATH: /usr/local/lib/node_modules/ynpm/node_modules/npm/bin/node-gyp-bin:/Users/cshi/y-jsoneditor/node_modules/.bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+22 verbose lifecycle y-jsoneditor@0.8.1~test: CWD: /Users/cshi/y-jsoneditor
+23 silly lifecycle y-jsoneditor@0.8.1~test: Args: [ '-c', 'grunt' ]
+24 silly lifecycle y-jsoneditor@0.8.1~test: Returned: code: 3  signal: null
+25 info lifecycle y-jsoneditor@0.8.1~test: Failed to exec test script
+26 info command completed in: 2.311 seconds
+27 info Fixing package.json /Users/cshi/y-jsoneditor/package.json
+28 verbose stack Error: y-jsoneditor@0.8.1 test: `grunt`
+28 verbose stack Exit status 3
+28 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/ynpm/node_modules/npm/lib/utils/lifecycle.js:255:16)
+28 verbose stack     at emitTwo (events.js:106:13)
+28 verbose stack     at EventEmitter.emit (events.js:191:7)
+28 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/ynpm/node_modules/npm/lib/utils/spawn.js:40:14)
+28 verbose stack     at emitTwo (events.js:106:13)
+28 verbose stack     at ChildProcess.emit (events.js:191:7)
+28 verbose stack     at maybeClose (internal/child_process.js:886:16)
+28 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
+29 verbose pkgid y-jsoneditor@0.8.1
+30 verbose cwd /Users/cshi/y-jsoneditor
+31 error Darwin 16.7.0
+32 error argv "/usr/local/bin/node" "/usr/local/bin/ynpm" "run" "test"
+33 error node v6.10.2
+34 error npm -v 3.10.9
+35 error ynpm -v 3.4.29
+36 error code ELIFECYCLE
+37 error y-jsoneditor@0.8.1 test: `grunt`
+37 error Exit status 3
+38 error Failed at the y-jsoneditor@0.8.1 test script.
+38 error This is most likely a problem with the y-jsoneditor package,
+38 error not with npm itself.
+38 error Tell the author that this fails on your system:
+38 error     grunt
+38 error You can get their info via:
+38 error     npm owner ls y-jsoneditor
+38 error There is likely additional logging output above.
+39 verbose exit [ 1, true ]

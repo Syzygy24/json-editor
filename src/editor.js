@@ -42,6 +42,9 @@ JSONEditor.AbstractEditor = Class.extend({
 
     this.options = $extend({}, (this.options || {}), (options.schema.options || {}), options);
 
+    // disable editing properties by button properties
+    this.options.disable_properties = true;
+
     if(!options.path && !this.schema.id) this.schema.id = 'root';
     this.path = options.path || 'root';
     this.formname = options.formname || this.path.replace(/\.([^.]+)/g,'[$1]');
