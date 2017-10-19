@@ -37,11 +37,13 @@
     "grunt-contrib-concat": "~1.0.0",
     "grunt-contrib-jshint": "~1.0.0",
     "grunt-contrib-uglify": "~1.0.0",
-    "grunt-contrib-watch": "~1.0.0"
+    "grunt-contrib-watch": "~1.0.0",
+    "qunitjs": "~2.4.0"
   },
   "scripts": {
     "build": "npm install && grunt",
     "start": "grunt watch",
-    "test": "grunt"
+    "test": "grunt",
+    "qunit": "qunit"
   }
 }

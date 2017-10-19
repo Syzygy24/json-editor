@@ -1246,3 +1246,18 @@ $("#editor_holder")
     $(this).jsoneditor('value',value);
   });
 ```
+
+QUnit Tests
+-------------------
+
+*Updated on 10/18/2017*
+
+__*WARNING__: The QUnit framework has been set up. However, how to accurately fetch internal variables
+and replace things like `document` or `window` is not yet found. 
+
+To do qunit test, use 'Webstorm' or any browser to render 
+`test/unit.html`. QUnit will load test js files listed on that html file,
+from `test/unit/` folder and test them, render the test results on page.
+
+*NOTE*: the order of the js files being tested on `unit.html` matters because of the dependencies.
+  

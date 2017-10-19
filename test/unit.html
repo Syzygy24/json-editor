@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Unit Test for y-json editor</title>
+
+    <!-- placeholders for the theme switcher -->
+    <link rel="stylesheet" id="theme_stylesheet">
+    <link rel="stylesheet" id="icon_stylesheet">
+
+    <style>[class*="foundicon-"] {font-family: GeneralFoundicons;font-style: normal;}</style>
+    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.4.0.css">
+
+</head>
+<body>
+    <!-- add jQuery only for tests -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <script src="https://code.jquery.com/qunit/qunit-2.4.0.js"></script>
+
+    <script src="../src/class.js"></script>
+    <script src="unit/class-test.js"></script>
+
+    <script src="../src/core.js"></script>
+    <script src="unit/core-test.js"></script>
+
+    <!-- We need to include this file first -->
+    <script src="../src/utilities.js"></script>
+    <script src="unit/utilities-test.js"></script>
+
+    <script src="../src/defaults.js"></script>
+    <script src="unit/defaults-test.js"></script>
+
+    <script src="../src/editor.js"></script>
+    <script src="unit/editor-test.js"></script>
+
+    <script src="../src/iconlib.js"></script>
+    <script src="unit/iconlib-test.js"></script>
+
+    <script src="../src/theme.js"></script>
+    <script src="unit/theme-test.js"></script>
+
+    <!-- order MATTERS! -->
+
+    <script src="../src/editors/object.js"></script>
+    <script src="unit/editors/object-test.js"></script>
+
+    <script src="../src/editors/array.js"></script>
+    <script src="unit/editors/array-test.js"></script>
+
+    <script src="../src/editors/base64.js"></script>
+    <script src="unit/editors/base64-test.js"></script>
+
+    <script src="../src/editors/checkbox.js"></script>
+    <script src="unit/editors/checkbox-test.js"></script>
+
+    <script src="../src/editors/enum.js"></script>
+    <script src="unit/editors/enum-test.js"></script>
+
+    <script src="../src/editors/string.js"></script>
+    <script src="unit/editors/string-test.js"></script>
+
+    <script src="../src/editors/number.js"></script>
+    <script src="unit/editors/number-test.js"></script>
+
+    <script src="../src/editors/integer.js"></script>
+    <script src="unit/editors/integer-test.js"></script>
+
+    <script src="../src/editors/multiple.js"></script>
+    <script src="unit/editors/multiple-test.js"></script>
+
+    <script src="../src/editors/multiselect.js"></script>
+    <script src="unit/editors/multiselect-test.js"></script>
+
+    <script src="../src/editors/null.js"></script>
+    <script src="unit/editors/null-test.js"></script>
+
+    <script src="../src/editors/select.js"></script>
+    <script src="unit/editors/select-test.js"></script>
+
+    <script src="../src/editors/selectize.js"></script>
+    <script src="unit/editors/selectize-test.js"></script>
+
+    <script src="../src/editors/table.js"></script>
+    <script src="unit/editors/table-test.js"></script>
+
+    <script src="../src/editors/upload.js"></script>
+    <script src="unit/editors/upload-test.js"></script>
+
+    <div class="container">
+      <div id="qunit"></div>
+      <div id="qunit-fixture"></div>
+    </div>
+</body>
+</html>
