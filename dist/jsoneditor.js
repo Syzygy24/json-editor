@@ -2051,7 +2051,7 @@ JSONEditor.defaults.editors.string = JSONEditor.AbstractEditor.extend({
           this.input_type = 'text';
           this.input_id = inputId;
           this.input = this.theme.getDateTimeInputJQuery(inputId);
-          window.jQuery('#' + inputId).datetimepicker({format: 'yyyy-mm-dd hh:ii'});
+          window.jQuery('#' + inputId).datetimepicker({format: 'yyyy-mm-dd hh:ii', bootcssVer: 3});
         } else {
           this.input = this.theme.getDateTimeInputHtml5();
         }
@@ -2249,7 +2249,7 @@ JSONEditor.defaults.editors.string = JSONEditor.AbstractEditor.extend({
 
     if(this.format && this.format === 'date-time') {
       if (window.jQuery) {
-        window.jQuery('#' + this.input_id).datetimepicker({format: 'yyyy-mm-dd hh:ii'});
+        window.jQuery('#' + this.input_id).datetimepicker({format: 'yyyy-mm-dd hh:ii', bootcssVer: 3});
         window.jQuery('#' + this.input_id).datetimepicker().on('changeDate', function (e) {
           e.preventDefault();
           e.stopPropagation();
@@ -4562,7 +4562,7 @@ JSONEditor.defaults.editors.multiple = JSONEditor.AbstractEditor.extend({
     if(!this.editors[i]) {
       this.buildChildEditor(i);
     }
-    
+
     var current_value = self.getValue();
 
     self.type = i;
@@ -4650,7 +4650,7 @@ JSONEditor.defaults.editors.multiple = JSONEditor.AbstractEditor.extend({
     }
     else {
       if(!this.schema.type || this.schema.type === "any") {
-        this.types = ['string','number','integer','boolean','object','array','null'];
+        this.types = ['string','number','integer','date-time','boolean','object','array','null'];
 
         // If any of these primitive types are disallowed
         if(this.schema.disallow) {
@@ -4695,8 +4695,8 @@ JSONEditor.defaults.editors.multiple = JSONEditor.AbstractEditor.extend({
 
     this.editor_holder = document.createElement('div');
     container.appendChild(this.editor_holder);
-    
-      
+
+
     var validator_options = {};
     if(self.jsoneditor.options.custom_validators) {
       validator_options.custom_validators = self.jsoneditor.options.custom_validators;
@@ -6385,7 +6385,8 @@ JSONEditor.AbstractTheme = Class.extend({
     // if jQuery exists, use jQuery-based datetime-picker
     var el = this.getFormInputField('text');
     el.setAttribute('id', inputId);
-    el.setAttribute('class', 'datetimepicker');
+    el.setAttribute('class', 'datetimepicker form-control');
+    el.style.padding = '6px 12px';
     return el;
   },
   getDateTimeInputHtml5: function() {

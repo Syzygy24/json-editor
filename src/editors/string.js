@@ -166,7 +166,7 @@ JSONEditor.defaults.editors.string = JSONEditor.AbstractEditor.extend({
           this.input_type = 'text';
           this.input_id = inputId;
           this.input = this.theme.getDateTimeInputJQuery(inputId);
-          window.jQuery('#' + inputId).datetimepicker({format: 'yyyy-mm-dd hh:ii'});
+          window.jQuery('#' + inputId).datetimepicker({format: 'yyyy-mm-dd hh:ii', bootcssVer: 3});
         } else {
           this.input = this.theme.getDateTimeInputHtml5();
         }
@@ -364,7 +364,7 @@ JSONEditor.defaults.editors.string = JSONEditor.AbstractEditor.extend({
 
     if(this.format && this.format === 'date-time') {
       if (window.jQuery) {
-        window.jQuery('#' + this.input_id).datetimepicker({format: 'yyyy-mm-dd hh:ii'});
+        window.jQuery('#' + this.input_id).datetimepicker({format: 'yyyy-mm-dd hh:ii', bootcssVer: 3});
         window.jQuery('#' + this.input_id).datetimepicker().on('changeDate', function (e) {
           e.preventDefault();
           e.stopPropagation();
