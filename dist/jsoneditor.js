@@ -4562,7 +4562,7 @@ JSONEditor.defaults.editors.multiple = JSONEditor.AbstractEditor.extend({
     if(!this.editors[i]) {
       this.buildChildEditor(i);
     }
-
+    
     var current_value = self.getValue();
 
     self.type = i;
@@ -4650,7 +4650,7 @@ JSONEditor.defaults.editors.multiple = JSONEditor.AbstractEditor.extend({
     }
     else {
       if(!this.schema.type || this.schema.type === "any") {
-        this.types = ['string','number','integer','date-time','boolean','object','array','null'];
+        this.types = ['string','number','integer','boolean','object','array','null'];
 
         // If any of these primitive types are disallowed
         if(this.schema.disallow) {
@@ -4695,8 +4695,8 @@ JSONEditor.defaults.editors.multiple = JSONEditor.AbstractEditor.extend({
 
     this.editor_holder = document.createElement('div');
     container.appendChild(this.editor_holder);
-
-
+    
+      
     var validator_options = {};
     if(self.jsoneditor.options.custom_validators) {
       validator_options.custom_validators = self.jsoneditor.options.custom_validators;
