@@ -392,6 +392,12 @@ JSONEditor.AbstractEditor = Class.extend({
   disable: function() {
     this.disabled = true;
   },
+  hide: function () {
+    this.container.style.display = 'none';
+  },
+  show: function () {
+    this.container.style.display = '';
+  },
   isEnabled: function() {
     return !this.disabled;
   },
