@@ -22,7 +22,7 @@ JSONEditor.defaults.editors.upload = JSONEditor.AbstractEditor.extend({
           } catch (error) {
             self.setValue(e.target.value);
             self.resetValues();
-            if (self.preview) self.preview.innerHTML = '<strong>Invalid url format</strong>';
+            if (self.preview && e.target.value !== '') self.preview.innerHTML = '<strong>Invalid url format</strong>';
             return;
           }
           self.preview_value = e.target.value;
