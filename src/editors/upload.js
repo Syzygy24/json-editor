@@ -40,6 +40,8 @@ JSONEditor.defaults.editors.upload = JSONEditor.AbstractEditor.extend({
 
       // File uploader
       this.uploader = this.theme.getFormInputField('file');
+      if (typeof InstallTrigger !== 'undefined')
+        this.uploader.style['padding-bottom'] = '40px';
       if (this.options.image) {
         this.uploader.accept = "image/jpeg, image/png, image/gif, image/bmp";
       }
@@ -90,7 +92,7 @@ JSONEditor.defaults.editors.upload = JSONEditor.AbstractEditor.extend({
       this.preview.innerHTML += '<br>';
       var img = document.createElement('img');
       img.style.maxWidth = '100%';
-      img.style.maxHeight = '100px';
+      img.style.maxHeight = '200px';
       img.onload = function () {
         self.image = img;
         if (fromUrl && self.parent && self.parent.onImageUpload) {
