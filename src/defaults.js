@@ -311,3 +311,9 @@ JSONEditor.defaults.resolvers.unshift(function(schema) {
   // If this schema uses `oneOf` or `anyOf`
   if(schema.oneOf || schema.anyOf) return "multiple";
 });
+// Use a specialised editor for imgUpload
+JSONEditor.defaults.resolvers.unshift(function (schema) {
+  if (schema.options && schema.options.imageUploader) {
+    return 'imageUpload';
+  }
+});

@@ -56,6 +56,7 @@ module.exports = function(grunt) {
           'src/editors/upload.js',
           'src/editors/checkbox.js',
           'src/editors/array/selectize.js',
+          'src/editors/imageUpload.js',
 
           // All the themes and iconlibs
           'src/theme.js',
@@ -107,7 +108,8 @@ module.exports = function(grunt) {
         nonbsp: true,
         nonew: true,
         immed: true,
-        latedef: true
+        latedef: true,
+        esversion: 6
       },
       beforeconcat: [
         'src/class.js',

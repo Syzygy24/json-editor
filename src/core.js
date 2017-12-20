@@ -149,10 +149,10 @@ JSONEditor.prototype = {
     
     return this;
   },
-  trigger: function(event) {
+  trigger: function(event, params) {
     if(this.callbacks && this.callbacks[event] && this.callbacks[event].length) {
       for(var i=0; i<this.callbacks[event].length; i++) {
-        this.callbacks[event][i]();
+        this.callbacks[event][i](params);
       }
     }
     
@@ -330,6 +330,7 @@ JSONEditor.prototype = {
       }
     }
   },
+  // Gets all external refs from a schema and returns them in an object.
   _getExternalRefs: function(schema) {
     var refs = {};
     var merge_refs = function(newrefs) {
@@ -363,12 +364,12 @@ JSONEditor.prototype = {
   _loadExternalRefs: function(schema, callback) {
     var self = this;
     var refs = this._getExternalRefs(schema);
-    
+
     var done = 0, waiting = 0, callback_fired = false;
-    
+
     $each(refs,function(url) {
       if(self.refs[url]) return;
-      if(!self.options.ajax) throw "Must set ajax option to true to load external ref "+url;
+      if(!self.options.ajax) return self.trigger('error', "Must set ajax option to true to load external ref "+url);
       self.refs[url] = 'loading';
       waiting++;
 
@@ -384,10 +385,10 @@ JSONEditor.prototype = {
           }
           catch(e) {
             window.console.log(e);
-            throw "Failed to parse external ref "+url;
+            return self.trigger('error', "Failed to parse external ref " + url);
           }
-          if(!response || typeof response !== "object") throw "External ref does not contain a valid schema - "+url;
-          
+          if(!response || typeof response !== "object") return self.trigger('error', "External ref does not contain a valid schema - "+url);
+
           self.refs[url] = response;
           self._loadExternalRefs(response,function() {
             done++;
@@ -400,12 +401,12 @@ JSONEditor.prototype = {
         // Request failed
         else {
           window.console.log(r);
-          throw "Failed to fetch ref via ajax- "+url;
+          self.trigger('error', "Failed to fetch ref via ajax- " + url);
         }
       };
       r.send();
     });
-    
+
     if(!waiting) {
       callback();
     }

@@ -1178,6 +1178,70 @@ The following schema will now use this custom editor for each of the array eleme
 }
 ```
 
+Image Uploader Interface
+--------------------------
+
+To use the Image Uploader interface, you can add this json to any schema.
+```json
+{
+    "type": "object",
+    "title": "Image",
+    "description": "Image that will be displayed",
+    "properties": {
+        "url": {
+            "title": "Image Uploader",
+            "type": "string",
+            "format": "url",
+            "pattern": "^(https?:)//.*",
+            "options": {
+                "upload": true,
+                "image": true
+            }
+        },
+        "height": {
+            "title": "Height",
+            "description": "The image's height in pixels",
+            "type": "integer"
+        },
+        "width": {
+            "title": "Width",
+            "description": "The image's width in pixels",
+            "type": "integer"
+        }
+    },
+    "options": {
+        "imageUploader": true
+    }
+}
+```
+
+The json editor base options MUST include an upload field. This field should be a function that will get called when one presses the upload button. This function will receive the path, filename, and an object with success and failure functions as parameters.
+ex:
+```js
+var options = {
+  upload: function (path, file, result) {
+    $.ajax({
+      ...,
+      success: (data) => {
+        result.success(data);
+      },
+      error: (err) => {
+        result.failure(err);
+      }
+    });
+  }
+};
+```
+
+The image uploader will save data as an object with url, height, and width fields.
+```json
+{
+  "url": "https://www.example.com/image",
+  "height": 1080,
+  "width": 1920
+};
+```
+
 If you create a custom editor interface that you think could be helpful to others, submit a pull request!
 
 The possibilities are endless.  Some ideas:
