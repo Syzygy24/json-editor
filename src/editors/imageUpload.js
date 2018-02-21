@@ -198,6 +198,28 @@ JSONEditor.defaults.editors.imageUpload = JSONEditor.AbstractEditor.extend({
     }
     return result;
   },
+  setValue: function (value, initial) {
+    this.value = value;
+    var self = this;
+
+    $each(this.cached_editors, function(i,editor) {
+      // Value explicitly set
+      if(typeof value[i] !== "undefined") {
+        self.addObjectProperty(i);
+        editor.setValue(value[i]);
+      }
+
+      // Otherwise, remove value unless this is the initial set or it's required
+      else if(!initial && !self.isRequired(editor)) {
+        editor.setValue(editor.getDefault(), initial, true);
+      }
+
+      // Otherwise, set the value to the default
+      else {
+        editor.setValue(editor.getDefault(),initial);
+      }
+    });
+  },
   // Main function for updating when changes to the data are made
   refreshValue: function (key) {
     this.value = {};

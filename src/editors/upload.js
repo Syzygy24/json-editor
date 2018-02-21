@@ -175,6 +175,8 @@ JSONEditor.defaults.editors.upload = JSONEditor.AbstractEditor.extend({
     if(this.value !== val) {
       this.value = val;
       this.input.value = this.value;
+      this.preview_value = this.value;
+      this.refreshPreview(true);
       this.onChange();
     }
   },
