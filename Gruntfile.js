@@ -72,6 +72,12 @@ module.exports = function(grunt) {
           'dist/standalone-jsoneditor.js'
         ],
         dest: 'dist/jsoneditor.js'
+      },
+      css: {
+        src: [
+          'node_modules/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css'
+        ],
+        dest: 'dist/datetimepicker.css'
       }
     },
     uglify: {
@@ -155,6 +161,7 @@ module.exports = function(grunt) {
     'concat:standalone',
     'jshint:afterconcat',
     'concat:dist',
+    'concat:css',
     'uglify'
   ]);
 };
