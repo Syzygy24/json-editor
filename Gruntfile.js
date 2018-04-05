@@ -66,6 +66,9 @@ module.exports = function(grunt) {
       },
       dist: {
         src: [
+          // dependencies
+          'node_modules/bootstrap-datetime-picker/js/bootstrap-datetimepicker.js',
+          // dependencies end
           'dist/standalone-jsoneditor.js'
         ],
         dest: 'dist/jsoneditor.js'
