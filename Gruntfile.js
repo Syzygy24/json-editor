@@ -2,19 +2,6 @@
 
 module.exports = function(grunt) {
   grunt.initConfig({
-    bower: {
-      install: {
-
-      }
-    },
-    bower_concat: {
-      dist: {
-        dest: {
-          js: 'dist/_bower.js',
-          css: 'dist/jsoneditor_datetimepicker.css'
-        }
-      }
-    },
     concat: {
       options: {
         sourceMap: true
@@ -79,7 +66,6 @@ module.exports = function(grunt) {
       },
       dist: {
         src: [
-          'dist/_bower.js',
           'dist/standalone-jsoneditor.js'
         ],
         dest: 'dist/jsoneditor.js'
@@ -160,16 +146,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-concat');
 
-  grunt.loadNpmTasks('grunt-bower-task');
-  grunt.loadNpmTasks('grunt-bower-concat');
-
   // Default task.
   grunt.registerTask('default', [
     'jshint:beforeconcat',
     'concat:standalone',
     'jshint:afterconcat',
-    'bower:install',
-    'bower_concat',
     'concat:dist',
     'uglify'
   ]);
