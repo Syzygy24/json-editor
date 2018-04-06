@@ -2,17 +2,11 @@
 
 module.exports = function(grunt) {
   grunt.initConfig({
-    bower: {
-      install: {
-
-      }
-    },
-    bower_concat: {
-      dist: {
-        dest: {
-          js: 'dist/_bower.js',
-          css: 'dist/jsoneditor_datetimepicker.css'
-        }
+    concat_css: {
+      options: {},
+      all: {
+        src: 'node_modules/bootstrap-datetime-picker/css/bootstrap-datetimepicker.min.css',
+        dest: 'dist/datetimepicker.css'
       }
     },
     concat: {
@@ -79,7 +73,9 @@ module.exports = function(grunt) {
       },
       dist: {
         src: [
-          'dist/_bower.js',
+          // dependencies
+          'node_modules/bootstrap-datetime-picker/js/bootstrap-datetimepicker.js',
+          // dependencies end
           'dist/standalone-jsoneditor.js'
         ],
         dest: 'dist/jsoneditor.js'
@@ -159,18 +155,15 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-concat');
-
-  grunt.loadNpmTasks('grunt-bower-task');
-  grunt.loadNpmTasks('grunt-bower-concat');
+  grunt.loadNpmTasks('grunt-concat-css');
 
   // Default task.
   grunt.registerTask('default', [
     'jshint:beforeconcat',
     'concat:standalone',
     'jshint:afterconcat',
-    'bower:install',
-    'bower_concat',
     'concat:dist',
+    'concat_css',
     'uglify'
   ]);
 };
