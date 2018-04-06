@@ -2,6 +2,13 @@
 
 module.exports = function(grunt) {
   grunt.initConfig({
+    concat_css: {
+      options: {},
+      all: {
+        src: 'node_modules/bootstrap-datetime-picker/css/bootstrap-datetimepicker.min.css',
+        dest: 'dist/datetimepicker.css'
+      }
+    },
     concat: {
       options: {
         sourceMap: true
@@ -72,12 +79,6 @@ module.exports = function(grunt) {
           'dist/standalone-jsoneditor.js'
         ],
         dest: 'dist/jsoneditor.js'
-      },
-      css: {
-        src: [
-          'node_modules/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css'
-        ],
-        dest: 'dist/datetimepicker.css'
       }
     },
     uglify: {
@@ -154,6 +155,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-concat-css');
 
   // Default task.
   grunt.registerTask('default', [
@@ -161,7 +163,7 @@ module.exports = function(grunt) {
     'concat:standalone',
     'jshint:afterconcat',
     'concat:dist',
-    'concat:css',
+    'concat_css',
     'uglify'
   ]);
 };

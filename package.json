@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "grunt": "^1.0.1",
+    "grunt-concat-css": "^0.3.2",
     "grunt-contrib-concat": "~1.0.0",
     "grunt-contrib-jshint": "~1.0.0",
     "grunt-contrib-less": "^1.4.1",
