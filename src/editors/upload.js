@@ -80,7 +80,7 @@ JSONEditor.defaults.editors.upload = JSONEditor.AbstractEditor.extend({
     if(!this.preview_value) return;
 
     var self = this;
-
+    var disableUpload = false;
     var mime = this.preview_value.match(/^data:([^;,]+)[;,]/);
     mime = mime ? mime[1] : fromUrl ? 'Url Preview' : 'unknown';
     this.preview.innerHTML = '<strong>Type:</strong> '+mime;
@@ -94,8 +94,20 @@ JSONEditor.defaults.editors.upload = JSONEditor.AbstractEditor.extend({
       img.style.maxWidth = '100%';
       img.style.maxHeight = '200px';
       img.onload = function () {
+        // Check limits if present
+        if (self.schema && self.schema.options && self.schema.options.limits) {
+          var limits = self.schema.options.limits;
+          if (img.width > limits.width || img.height > limits.height) {
+            self.preview.innerHTML = 'Image is too large';
+            if (fromUrl) {
+              self.value = '';
+              self.input.value = '';
+            }
+            disableUpload = true;
+          }
+        }
         self.image = img;
-        if (fromUrl && self.parent && self.parent.onImageUpload) {
+        if (fromUrl && self.parent && self.parent.onImageUpload && !disableUpload) {
           self.parent.onImageUpload(img);
           self.parent.onChildEditorChange(self);
         }
@@ -112,6 +124,9 @@ JSONEditor.defaults.editors.upload = JSONEditor.AbstractEditor.extend({
     if (!fromUrl) {
       var uploadButton = this.getButton('Upload', 'upload', 'Upload');
       this.preview.appendChild(uploadButton);
+      if (disableUpload) {
+        uploadButton.setAttribute('disabled', true);
+      }
       uploadButton.addEventListener('click',function(event) {
         event.preventDefault();
 
