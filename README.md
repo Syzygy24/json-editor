@@ -1196,6 +1196,11 @@ To use the Image Uploader interface, you can add this json to any schema.
             "options": {
                 "upload": true,
                 "image": true
+                // ,
+                // "limits": {
+                //   "width": 200,
+                //   "height": 200
+                // }
             }
         },
         "height": {
@@ -1214,6 +1219,7 @@ To use the Image Uploader interface, you can add this json to any schema.
     }
 }
 ```
+The limits object under options is entirely optional, but can be used to limit the width and height of the images you want to upload.
 
 The json editor base options MUST include an upload field. This field should be a function that will get called when one presses the upload button. This function will receive the path, filename, and an object with success and failure functions as parameters.
 ex:
